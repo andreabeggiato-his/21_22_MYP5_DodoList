@@ -1,12 +1,26 @@
 import '../styles/dodoItem.scss';
 
-const DodoItem = () => {
+const DodoItem = (props) => {
+
+  const date = props.date;
+  const text = props.text;
+  const done = props.done;
+  const onTodoChange = props.onTodoChange;
+
+  const dateString = date.toString();
+
+  const handleClick = () => {
+    onTodoChange();
+  };
 
   return (
-    <div className="dodoItem">
-      <input type="checkbox" />
-      <div>Dodo Item text</div>
-      <div>10/10/2021</div>
+    <div
+      className="dodoItem"
+      onClick={handleClick}
+    >
+      <div>{done ? 'Y' : 'N'}</div>
+      <div>{text}</div>
+      <div>{dateString}</div>
     </div>
   );
 };
