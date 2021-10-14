@@ -19,7 +19,7 @@ const todo3 = {
 
 const DodoList = () => {
 
-  const todos = React.useState([todo1, todo2, todo3]);
+  const [todos, setTodos] = React.useState([todo1, todo2, todo3]);
 
   const handleTodoChange = () => {
     console.log('asdfasdf');
