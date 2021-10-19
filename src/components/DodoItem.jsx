@@ -5,12 +5,13 @@ const DodoItem = (props) => {
   const date = props.date;
   const text = props.text;
   const done = props.done;
+  const index = props.index;
   const onTodoChange = props.onTodoChange;
 
   const dateString = date.toString();
 
   const handleClick = () => {
-    onTodoChange();
+    onTodoChange(index);
   };
 
   return (

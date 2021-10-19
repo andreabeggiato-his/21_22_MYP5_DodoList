@@ -1,28 +1,15 @@
 import React from 'react';
 import DodoItem from './DodoItem';
 
-const todo1 = {
-  done: true,
-  text: 'First todo',
-  dueDate: new Date(),
-};
-const todo2 = {
-  done: false,
-  text: 'Second todo',
-  dueDate: new Date(),
-};
-const todo3 = {
-  done: true,
-  text: 'Procastination',
-  dueDate: new Date(),
-};
+const DodoList = (props) => {
 
-const DodoList = () => {
+  const todos = props.todos;
+  const onTodosChange = props.onTodosChange;
 
-  const [todos, setTodos] = React.useState([todo1, todo2, todo3]);
-
-  const handleTodoChange = () => {
-    console.log('asdfasdf');
+  const handleTodoChange = (clickedIndex) => {
+    const result = [...todos];
+    result[clickedIndex].done = !result[clickedIndex].done;
+    onTodosChange(result);
   };
 
   const result = [];
@@ -30,6 +17,7 @@ const DodoList = () => {
     const currentTodo = todos[i];
     result.push(
       <DodoItem
+        index={i}
         text={currentTodo.text}
         date={currentTodo.dueDate}
         done={currentTodo.done}
